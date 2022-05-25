@@ -1,7 +1,11 @@
 <?php
 include("includes/db.php");
 
-$query = "SELECT * FROM users";					// Select all data in table "status"
+if (isset($_GET['user_id'])) {
+    $user_id = $_GET['user_id'];
+}
+
+$query = "SELECT * FROM users WHERE user_email = '{$user_id}'";					// Select all data in table "status"
 $result = mysqli_query($connection, $query);
 
 $data_array = array();
@@ -18,7 +22,6 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 	array_push($data_array, $stdClass);
 }
-
 
 $data_array = json_encode($data_array);
 $data_array = trim($data_array, '[]');

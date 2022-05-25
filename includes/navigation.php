@@ -57,7 +57,7 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="logout.php">
                                     <div class="d-flex align-items-center">
                                         <div class="">
                                             <i class="bi bi-lock-fill"></i>
@@ -107,20 +107,7 @@
             </li>
 
             <li class="menu-label">System</li>
-            <li>
-                <a href="appliances.php">
-                    <div class="parent-icon"><i class="bi bi-collection-play-fill"></i>
-                    </div>
-                    <div class="menu-title">Applicances</div>
-                </a>
-                <!-- <ul>
-                    <li> <a href="posts.php?source=add_post"><i class="bi bi-circle"></i>Add Post</a>
-                    </li>
-                    <li> <a href="./posts.php"><i class="bi bi-circle"></i>View all Posts</a>
-                    </li>
-                </ul> -->
-            </li>
-
+            <li style="border-bottom: 1px solid;"></li>
             <li>
                 <a href="#">
                     <div class="parent-icon"><i class="bi bi-chat-left-text-fill"></i></i>

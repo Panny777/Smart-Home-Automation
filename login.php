@@ -121,17 +121,19 @@ if (isset($_POST['login'])) {
             <!-- Email input -->
             <div class="form-outline mb-4">
               <label class="form-label" for="form1Example13">Email address</label>
-              <input type="email" id="form1Example13" class="form-control form-control-lg" name="email" autocapitalize="off" require>
+              <input type="email" id="form1Example13" class="form-control form-control-lg" name="email" placeholder="Email" autocapitalize="off" require>
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-4">
               <label class="form-label" for="form1Example23">Password</label>
-              <input type="password" id="form1Example23" class="form-control form-control-lg" name="password" autocapitalize="off" require>
+              <input type="password" id="form1Example23" class="form-control form-control-lg" name="password" placeholder="Password" autocapitalize="off" require>
             </div>
 
             <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-lg btn-block" name="login">Sign in</button>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-lg btn-block" name="login">Sign in</button>
+            </div>
 
           </form>
         </div>

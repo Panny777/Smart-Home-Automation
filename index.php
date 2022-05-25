@@ -24,24 +24,24 @@ if (!isset($_COOKIE["user_email"])) {
 }
 
 
-
 // Including Navigation Menu
 include("includes/navigation.php");
 ?>
+
 
 <?php
 // Updating values for bulb 1
 if (isset($_POST['bulb1Btn']))      // If press ON
 {
   if ($bulb1_status == 1) {
-    $query = "UPDATE users SET bulb1_status = 0";
+    $query = "UPDATE users SET bulb1_status = 0 WHERE user_email = '{$user_email}'";
     $update_bulb1_query = mysqli_query($connection, $query);
 
     if (!$update_bulb1_query) {
       die("QUERY FAILED" . mysqli_error($connection));
     }
   } else {
-    $query = "UPDATE users SET bulb1_status = 1";
+    $query = "UPDATE users SET bulb1_status = 1 WHERE user_email = '{$user_email}'";
     $update_bulb1_query = mysqli_query($connection, $query);
 
     if (!$update_bulb1_query) {
@@ -56,14 +56,14 @@ if (isset($_POST['bulb1Btn']))      // If press ON
 if (isset($_POST['bulb2Btn']))      // If press ON
 {
   if ($bulb2_status == 1) {
-    $query = "UPDATE users SET bulb2_status = 0";
+    $query = "UPDATE users SET bulb2_status = 0 WHERE user_email = '{$user_email}'";
     $update_bulb2_query = mysqli_query($connection, $query);
 
     if (!$update_bulb2_query) {
       die("QUERY FAILED" . mysqli_error($connection));
     }
   } else {
-    $query = "UPDATE users SET bulb2_status = 1";
+    $query = "UPDATE users SET bulb2_status = 1 WHERE user_email = '{$user_email}'";
     $update_bulb2_query = mysqli_query($connection, $query);
 
     if (!$update_bulb2_query) {
@@ -78,7 +78,7 @@ if (isset($_POST['bulb2Btn']))      // If press ON
 // Updating values for water valve
 if (isset($_POST['waterValveOn']))      // If press ON
 {
-  $query = "UPDATE users SET waterValve_status = 1";
+  $query = "UPDATE users SET waterValve_status = 1 WHERE user_email = '{$user_email}'";
   $update_waterValve_query = mysqli_query($connection, $query);
 
   if (!$update_waterValve_query) {
@@ -89,7 +89,7 @@ if (isset($_POST['waterValveOn']))      // If press ON
 
 if (isset($_POST['waterValveOff']))    // If press OFF
 {
-  $query = "UPDATE users SET waterValve_status = 0";
+  $query = "UPDATE users SET waterValve_status = 0 WHERE user_email = '{$user_email}'";
   $update_waterValve_query = mysqli_query($connection, $query);
 
   if (!$update_waterValve_query) {
@@ -109,7 +109,7 @@ if (isset($_POST['waterValveOff']))    // If press OFF
           <div class="d-flex align-items-center">
             <div class="">
               <?php
-              $query = "SELECT bulb1_status from users";
+              $query = "SELECT bulb1_status from users WHERE user_email = '{$user_email}'";
               $result = mysqli_query($connection, $query);
 
               while ($row = mysqli_fetch_assoc($result)) {
@@ -145,7 +145,7 @@ if (isset($_POST['waterValveOff']))    // If press OFF
           <div class="d-flex align-items-center">
             <div class="">
               <?php
-              $query = "SELECT * from users";
+              $query = "SELECT bulb2_status FROM users WHERE user_email = '{$user_email}'";
               $result = mysqli_query($connection, $query);
 
               while ($row = mysqli_fetch_assoc($result)) {
