@@ -16,17 +16,10 @@
   new PerfectScrollbar(".best-product")
 </script>
 
-<!-- Bootstrap bundle JS -->
-
 <!--plugins-->
 <script src="assets/plugins/input-tags/js/tagsinput.js"></script>
 
 
 </body>
-
-<footer>
-	<p class="text-center">Made with ❤️ by Panny Tech</p>
-</footer>
-
 
 </html>

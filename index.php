@@ -5,15 +5,14 @@ include("includes/navigation.php");
 
 ?>
 
-
-<form action="" method="POST">
-
-  <div class="wrapper">
-    <h1>Chauka Home Automatiom</h1>
-    <button class="button btnon" type="submit" name="ON">ON</button><br>
-    <button class="button btnoff" type="submit" name="OFF">OFF</button>
-  </div>
-</form>
+<main class="page-content">
+  <form action="" method="POST">
+    <div class="wrapper">
+      <button class="button btnon" type="submit" name="ON">ON</button><br>
+      <button class="button btnoff" type="submit" name="OFF">OFF</button>
+    </div>
+  </form>
+</main>
 
 <?php
 if (isset($_POST['ON']))      // If press ON

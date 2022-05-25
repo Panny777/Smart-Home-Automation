@@ -21,8 +21,8 @@
                                         <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" alt="" class="rounded-circle" width="54" height="54">
 
                                         <div class="ms-3">
-                                            <h6 class="mb-0 dropdown-user-name"><?php echo $admin_firstname; ?> <?php echo $admin_lastname; ?></h6>
-                                            <small class="mb-0 dropdown-user-designation text-secondary">System Administrator</small>
+                                            <h6 class="mb-0 dropdown-user-name">Chauka</h6>
+                                            <small class="mb-0 dropdown-user-designation text-secondary"></small>
                                         </div>
                                     </div>
                                 </a>
@@ -45,7 +45,7 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item" href="profile.php">
+                                <a class="dropdown-item" href="#">
                                     <div class="d-flex align-items-center">
                                         <div class=""><i class="bi bi-person-fill"></i></div>
                                         <div class="ms-3"><span>Profile</span></div>
@@ -57,7 +57,7 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li>
-                                <a class="dropdown-item" href="./includes/logout.php">
+                                <a class="dropdown-item" href="#">
                                     <div class="d-flex align-items-center">
                                         <div class="">
                                             <i class="bi bi-lock-fill"></i>
@@ -108,42 +108,32 @@
 
             <li class="menu-label">System</li>
             <li>
-                <a href="javascript:;" class="has-arrow">
+                <a href="appliances.php">
                     <div class="parent-icon"><i class="bi bi-collection-play-fill"></i>
                     </div>
-                    <div class="menu-title">Posts</div>
+                    <div class="menu-title">Applicances</div>
                 </a>
-                <ul>
+                <!-- <ul>
                     <li> <a href="posts.php?source=add_post"><i class="bi bi-circle"></i>Add Post</a>
                     </li>
                     <li> <a href="./posts.php"><i class="bi bi-circle"></i>View all Posts</a>
                     </li>
-                </ul>
+                </ul> -->
             </li>
 
             <li>
-                <a href="./comments.php">
+                <a href="">
                     <div class="parent-icon"><i class="bi bi-chat-left-text-fill"></i></i>
                     </div>
-                    <div class="menu-title">Comments</div>
+                    <div class="menu-title">Report</div>
                 </a>
             </li>
-
-
-            <li>
-                <a href="./messages.php">
-                    <div class="parent-icon"><i class="lni lni-facebook-messenger"></i>
-                    </div>
-                    <div class="menu-title">Messages</div>
-                </a>
-            </li>
-
 
             <li>
                 <a href="./profile.php">
                     <div class="parent-icon"><i class="bi bi-person-lines-fill"></i>
                     </div>
-                    <div class="menu-title">Admin Profile</div>
+                    <div class="menu-title">User Profile</div>
                 </a>
             </li>
 
