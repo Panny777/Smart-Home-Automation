@@ -56,7 +56,7 @@
     }
 
     .btnoff {
-      padding: 15px 178px;
+      padding: 15px 150px;
     }
   </style>
 
