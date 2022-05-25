@@ -1,16 +1,20 @@
 <?php
 include("includes/db.php");
 
-$query = "SELECT * from status";					// Select all data in table "status"
+$query = "SELECT * FROM users";					// Select all data in table "status"
 $result = mysqli_query($connection, $query);
 
 $data_array = array();
 
 while ($row = mysqli_fetch_assoc($result)) {
-	$led_status = (int) $row["status"];
+	$bulb1_status = (int) $row["bulb1_status"];
+	$bulb2_status = (int) $row["bulb2_status"];
+	$waterValve_status = (int) $row["waterValve_status"];
 
 	$stdClass = new stdClass();
-	$stdClass->led_status = $led_status;
+	$stdClass->bulb1_status = $bulb1_status;
+	$stdClass->bulb2_status = $bulb2_status;
+	$stdClass->waterValve_status = $waterValve_status;
 
 	array_push($data_array, $stdClass);
 }

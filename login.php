@@ -10,7 +10,7 @@ if (isset($_POST['login'])) {
   $email = mysqli_real_escape_string($connection, $email);
   $password = mysqli_real_escape_string($connection, $password);
 
-  $query = "SELECT * FROM users WHERE email = '{$email}' ";
+  $query = "SELECT * FROM users WHERE user_email = '{$email}' ";
   $select_admin_query = mysqli_query($connection, $query);
 
   if (!$select_admin_query) {
@@ -18,23 +18,16 @@ if (isset($_POST['login'])) {
   }
 
   while ($row = mysqli_fetch_array($select_admin_query)) {
-    $db_email = $row['email'];
-    $db_password = $row['password'];
-
-    // Encrypting the admin password
-    $hash = "$2a$10$";
-    $string = "iamacomputersciencestudent";
-    $hashString = $hash . $string;
-    $password = crypt($password, $hashString);
-    $password = md5($email . $password);
+    $db_email = $row['user_email'];
+    $db_password = $row['user_password'];
 
     if ($email == $db_email && $db_password == $password) {
 
       // Unsetting all cookies
-      setcookie("email", "", time() - (60 * 60 * 24 * 7), "/pannytech.com/admin");
+      setcookie("user_email", "", time() - (60 * 60 * 24 * 7), "/chauka");
 
       $expiration = time() + (7200); // Setting Coookie expiration of two hours
-      setcookie("email", $email, $expiration);
+      setcookie("user_email", $email, $expiration);
 
       header("Location: ./");
     } elseif ($email != $db_email && $db_password == $password) {
@@ -103,16 +96,12 @@ if (isset($_POST['login'])) {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
   <!-- Favicon icon -->
-  <title>Login Panny Tech</title>
+  <title>Login Chauka Smart Home</title>
 
   <!-- loader-->
   <link href="assets/css/pace.min.css" rel="stylesheet" />
 
   <style>
-    /* #loginSuccess {
-      visibility: hidden;
-    } */
-
     body {
       overflow-x: hidden;
     }

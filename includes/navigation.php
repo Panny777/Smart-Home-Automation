@@ -21,7 +21,7 @@
                                         <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" alt="" class="rounded-circle" width="54" height="54">
 
                                         <div class="ms-3">
-                                            <h6 class="mb-0 dropdown-user-name">Chauka</h6>
+                                            <h6 class="mb-0 dropdown-user-name"><?php echo $username; ?></h6>
                                             <small class="mb-0 dropdown-user-designation text-secondary"></small>
                                         </div>
                                     </div>
@@ -45,7 +45,7 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="profile.php">
                                     <div class="d-flex align-items-center">
                                         <div class=""><i class="bi bi-person-fill"></i></div>
                                         <div class="ms-3"><span>Profile</span></div>
@@ -122,7 +122,7 @@
             </li>
 
             <li>
-                <a href="">
+                <a href="#">
                     <div class="parent-icon"><i class="bi bi-chat-left-text-fill"></i></i>
                     </div>
                     <div class="menu-title">Report</div>

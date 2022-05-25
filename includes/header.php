@@ -3,6 +3,7 @@
 
 <?php include "db.php"; ?>
 
+
 <!doctype html>
 <html lang="en" class="light-theme">
 
@@ -27,11 +28,6 @@
   <link href="assets/css/icons.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-
-  <link href="vendor/fancybox/dist/jquery.fancybox.min.css" type="text/css" rel="stylesheet" />
-
-  <link rel="stylesheet" href="assets/use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
 
   <!-- loader-->
   <link href="assets/css/pace.min.css" rel="stylesheet" />
