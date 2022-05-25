@@ -74,37 +74,30 @@
 
 <?php
 
-$server   = "localhost";  // Change this to correspond with your database port
-$username   = "root";      // Change if use webhost online
-$password   = "";
-$DB     = "qlda";      // database name
-
-
-$update = new mysqli($server, $username, $password, $DB);  // Check database connection
-if ($update->connect_error) {
-  die("Connection failed: " . $update->connect_error);
-}
+include("includes/db.php");
 
 
 if (isset($_POST['ON']))      // If press ON
 {
 
-  $sql = "UPDATE status SET status = 1";
+  $query = "UPDATE status SET status = 1";
 
-  // If don't put this If , we can't change the value in database
-  if ($update->query($sql) === TRUE) {
-    //$_GET[] = 1;						
-  }
+  $update_status_query = mysqli_query($connection, $query);
+
+		if (!$update_status_query) {
+			die("QUERY FAILED" . mysqli_error($connection));
+		}
 }
 
 if (isset($_POST['OFF']))    // If press OFF
 {
 
-  $sql = "UPDATE status SET status = 0"; 
-  
-  // Echo "0" , equivalent with send data to App to toast OFF
-  if ($update->query($sql) === TRUE) {  // Because it's been a long time , so i forgot
-    //$_GET[] = 0;						// why i have to put this line but it still run when it's commented
-  }
+  $query = "UPDATE status SET status = 0"; 
+
+  $update_status_query = mysqli_query($connection, $query);
+
+		if (!$update_status_query) {
+			die("QUERY FAILED" . mysqli_error($connection));
+		}
 }
 ?>
