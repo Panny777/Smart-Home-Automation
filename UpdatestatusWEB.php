@@ -89,17 +89,19 @@ if ($update->connect_error) {
 if (isset($_POST['ON']))      // If press ON
 {
 
-  $sql = "UPDATE status SET status = 1";  // Update present status to database
+  $sql = "UPDATE status SET status = 1";
+
   // If don't put this If , we can't change the value in database
-  if ($update->query($sql) === TRUE) {  // Because it's been a long time , so i forgot
-    //$_GET[] = 1;						// why i have to put this line but it still run when it's commented
+  if ($update->query($sql) === TRUE) {
+    //$_GET[] = 1;						
   }
 }
 
 if (isset($_POST['OFF']))    // If press OFF
 {
 
-  $sql = "UPDATE status SET status = 0";  // Update present status to database
+  $sql = "UPDATE status SET status = 0"; 
+  
   // Echo "0" , equivalent with send data to App to toast OFF
   if ($update->query($sql) === TRUE) {  // Because it's been a long time , so i forgot
     //$_GET[] = 0;						// why i have to put this line but it still run when it's commented
