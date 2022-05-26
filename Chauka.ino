@@ -7,11 +7,11 @@
 StaticJsonDocument<200> jsonBuffer;
 
 // WiFi parameters
-//const char* ssid = "design studio1";
-//const char* password = "12345678";
+const char* ssid = "design studio1";
+const char* password = "12345678";
 
-const char* ssid = "HAWA";
-const char* password = "HAWA2020";
+//const char* ssid = "HAWA";
+//const char* password = "HAWA2020";
 
 //Naming the HTTPClient as http
 HTTPClient http;
@@ -20,10 +20,10 @@ HTTPClient http;
 WiFiClient client;
 
 int bulb1 = D5;
-int bulb2 = D4;
+int bulb2 = D0;
 
 //Host to get data
-const char* host = "http://192.168.1.37/chauka/Getstatus.php?user_id=muniru.panya13@gmail.com";
+const char* host = "http://192.168.137.211/chauka/Getstatus.php?user_id=muniru.panya13@gmail.com";
 
 
 void setup() {

@@ -80,7 +80,7 @@
     <aside class="sidebar-wrapper" data-simplebar="true">
         <div class="sidebar-header">
             <div>
-                <a href="../admin">
+                <a href="./">
                     <h4 class="logo-text">Chauka Smart Home</h4>
                 </a>
             </div>
