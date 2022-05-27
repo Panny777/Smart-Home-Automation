@@ -84,40 +84,26 @@ if (isset($_POST['waterValveOff']))    // If press OFF
             </div>
           </div>
         </div>
+
         <div class="col-lg-6">
           <div class="card radius-10 border-0 border-start border-pink border-3">
             <div class="card-body">
-              <div class="d-flex align-items-center">
-                <div class="">
-
-                  <?php
-                  // $query = "SELECT * from users";
-                  // $result = mysqli_query($connection, $query);
-
-                  // while ($row = mysqli_fetch_assoc($result)) {
-                  //   $bulb2_status = (int) $row["waterValve_status"];
-                  //   if ($bulb2_status == 1) {
-                  //     $bulb2_status = "On";
-                  //   } else {
-                  //     $bulb2_status = "Off";
-                  //   }
-                  // }
-                  ?>
-                  <p class="mb-1 text-black">Fan</p>
-                  <div style="display: flex;">
-                    <p class="mb-1 text-black" style="font-weight: bold;">Speed:&nbsp;</p>
-                    <p class="mb-1 text-black" id="fanSpeed"></p>
+              <a href="appliances.php?source=fans">
+                <div class="d-flex align-items-center">
+                  <div class="">
+                    <?php
+                    ?>
+                    <p class="mb-1 text-black">Fan</p>
+                    <div style="display: flex;">
+                      <!-- <p class="mb-1 text-black" style="font-weight: bold;">Speed:&nbsp;</p> -->
+                      <p class="mb-1 text-black" id=""></p>
+                    </div>
                   </div>
-                  <div class="custom-control custom-switch">
-                    <form action="" method="POST">
-                      <input type="range" class="form-range" min="0" max="2" step="1" id="fanRange">
-                    </form>
+                  <div class="ms-auto widget-icon bg-tiffany text-white">
+                    <i class="bx bx-health"></i>
                   </div>
                 </div>
-                <div class="ms-auto widget-icon bg-pink text-white">
-                  <i class="bx bx-gas-pump"></i>
-                </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>
@@ -164,23 +150,6 @@ if (isset($_POST['waterValveOff']))    // If press OFF
   </div>
 </main>
 
-
-<!-- Getting the Fan Speed -->
-<script>
-  var slider = document.getElementById("fanRange");
-  var output = document.getElementById("fanSpeed");
-  output.innerHTML = slider.value;
-
-  slider.oninput = function() {
-    if (slider.value == 0) {
-      output.innerHTML = "Low";
-    } else if (slider.value == 1) {
-      output.innerHTML = "Medium";
-    } else if (slider.value == 2) {
-      output.innerHTML = "High";
-    }
-  }
-</script>
 
 <?php
 // Footer File
