@@ -1,9 +1,49 @@
+<?php
+// Updating values for bulb 1
+if (isset($_POST['fanBtn']))      // If press ON
+{
+    if ($fan_status == 1) {
+        $query = "UPDATE users SET fan_status = 0 WHERE user_email = '{$user_email}'";
+        $update_fan_status_query = mysqli_query($connection, $query);
+
+        if (!$update_fan_status_query) {
+            die("QUERY FAILED" . mysqli_error($connection));
+        }
+    } else {
+        $query = "UPDATE users SET fan_status = 1 WHERE user_email = '{$user_email}'";
+        $update_fan_status_query = mysqli_query($connection, $query);
+
+        if (!$update_fan_status_query) {
+            die("QUERY FAILED" . mysqli_error($connection));
+        }
+    }
+    header('Location:' . $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING']);
+    die;
+}
+
+if (isset($_POST['fanSpeed']))      // If press ON
+{
+    $fan_speed = $_POST['fanSpeed'];
+    echo $fan_speed;
+    
+    $query = "UPDATE users SET fan_speed = '{$fan_speed}' WHERE user_email = '{$user_email}'";
+    $update_fan_speed_query = mysqli_query($connection, $query);
+
+    if (!$update_fan_speed_query) {
+        die("QUERY FAILED" . mysqli_error($connection));
+    }
+
+    header('Location:' . $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING']);
+    die;
+}
+?>
+
 <!--start content-->
 <main class="page-content">
     <div class="card">
         <div class="card-body">
             <div class="d-flex align-items-center">
-                <h5 class="mb-4">Bulbs Control</h5>
+                <h5 class="mb-4">Fan Control</h5>
             </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-4">
                 <div class="col-lg-6">
@@ -13,26 +53,26 @@
                                 <div class="">
 
                                     <?php
-                                    $query = "SELECT bulb1_status from users WHERE user_email = '{$user_email}'";
+                                    $query = "SELECT fan_status from users WHERE user_email = '{$user_email}'";
                                     $result = mysqli_query($connection, $query);
 
                                     while ($row = mysqli_fetch_assoc($result)) {
-                                        $bulb1_status = (int) $row["bulb1_status"];
-                                        if ($bulb1_status == 1) {
-                                            $bulb1_status = "On";
+                                        $fan_status = (int) $row["fan_status"];
+                                        if ($fan_status == 1) {
+                                            $fan_status = "On";
                                         } else {
-                                            $bulb1_status = "Off";
+                                            $fan_status = "Off";
                                         }
                                     }
                                     ?>
                                     <p class="mb-1 text-black mb-4">Fan</p>
                                     <div style="display: flex;">
                                         <p class="mb-1 text-black" style="font-weight: bold;">Status:&nbsp;</p>
-                                        <p class="mb-1 text-black"><?php echo $bulb1_status; ?></p>
+                                        <p class="mb-1 text-black"><?php echo $fan_status; ?></p>
                                     </div>
                                     <div class="custom-control custom-switch mb-4">
                                         <form action="" method="POST">
-                                            <button id="fanBtn" class="btn btn-primary" name="fanBtn"><?php echo $bulb1_status; ?></button>
+                                            <button id="fanBtn" class="btn btn-primary" name="fanBtn"><?php echo $fan_status; ?></button>
                                         </form>
                                     </div>
                                     <div style="display: flex;">
@@ -41,7 +81,8 @@
                                     </div>
                                     <div class="custom-control custom-switch">
                                         <form action="" method="POST">
-                                            <input type="range" class="form-range" min="0" max="2" step="1" id="fanRange">
+                                            <input type="range" class="form-range" min="1" max="3" step="1" id="fanRange" name="fanSpeed">
+                                            <!-- <input type="text" id="fanSpeed" value=""> -->
                                         </form>
                                     </div>
                                 </div>
@@ -77,11 +118,11 @@
     output.innerHTML = slider.value;
 
     slider.oninput = function() {
-        if (slider.value == 0) {
+        if (slider.value == 1) {
             output.innerHTML = "Low";
-        } else if (slider.value == 1) {
-            output.innerHTML = "Medium";
         } else if (slider.value == 2) {
+            output.innerHTML = "Medium";
+        } else if (slider.value == 3) {
             output.innerHTML = "High";
         }
     }

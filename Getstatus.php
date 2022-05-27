@@ -14,11 +14,18 @@ while ($row = mysqli_fetch_assoc($result)) {
 	$bulb1_status = (int) $row["bulb1_status"];
 	$bulb2_status = (int) $row["bulb2_status"];
 	$waterValve_status = (int) $row["waterValve_status"];
+	$waterPump_status = (int) $row["waterPump_status"];
+	$fan_status = (int) $row["fan_status"];
+	$fanSpeed = (int) $row["fan_speed"];
 
 	$stdClass = new stdClass();
 	$stdClass->bulb1_status = $bulb1_status;
 	$stdClass->bulb2_status = $bulb2_status;
 	$stdClass->waterValve_status = $waterValve_status;
+	$stdClass->waterPump_status = $waterPump_status;
+	$stdClass->fan_status = $fan_status;
+	$stdClass->fan_speed = $fanSpeed;
+
 
 	array_push($data_array, $stdClass);
 }

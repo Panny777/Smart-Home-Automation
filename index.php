@@ -139,7 +139,7 @@ if (isset($_POST['waterPumpBtn'])) {
                   while ($row = mysqli_fetch_assoc($result)) {
                     $waterPump_status = (int) $row["waterPump_status"];
                     if ($waterPump_status == 1) {
-                      $waterPump_status = "Working Normal";
+                      $waterPump_status = "Working";
                       $waterPump_status2 = "Override";
                     } else {
                       $waterPump_status = "Overrode";
@@ -194,7 +194,7 @@ if (isset($_POST['waterPumpBtn'])) {
                     </form>
                   </div>
                 </div>
-                <div class="ms-auto widget-icon bg-purple text-white">
+                <div class="ms-auto widget-icon bg-tiffany text-white">
                   <i class="bx bx-vial"></i>
                 </div>
               </div>
