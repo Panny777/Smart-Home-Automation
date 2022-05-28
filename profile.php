@@ -70,11 +70,11 @@ if (isset($_POST['update_admin'])) {
                             <div class="card-body">
 
                                 <form class="row g-3" method="post" enctype="multipart/form-data">
-                                    <div class="col-6">
+                                    <div class="col-12">
                                         <label class="form-label">Username</label>
                                         <input type="text" class="form-control" value="<?php echo $username; ?>" disabled>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-12">
                                         <label class="form-label">Email</label>
                                         <input type="text" class="form-control" value="<?php echo $user_email; ?>" disabled>
                                     </div>
@@ -83,10 +83,9 @@ if (isset($_POST['update_admin'])) {
                                         <div class="input-group mb-3">
                                             <input type="password" id="myInput" name="user_password" class="form-control" value="<?php echo $user_password;?>">
                                             <span class="input-group-text" id="basic-addon1"><i id="hide-pass-icon" class="lni lni-eye" style="color: black;" onclick="showPassword()"></i></span>
-
                                         </div>
                                     </div>
-                                    <div class="text-start">
+                                    <div class="text-start text-center">
                                         <button id="save-changes-btn" type="submit" class="btn btn-primary px-4" name="update_admin" onclick="changeText()">Save Changes</button>
                                     </div>
                                 </form>
