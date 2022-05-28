@@ -18,8 +18,6 @@ if (!isset($_COOKIE["user_email"])) {
 
   while ($row = mysqli_fetch_array($select_user_query)) {
     $username = $row['username'];
-    $waterValveBtn = (int) $row["waterValve_status"];
-    $waterPumpBtn = (int) $row["waterPump_status"];
   }
 }
 
