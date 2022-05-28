@@ -160,3 +160,31 @@ if (isset($_POST['waterPumpBtn'])) {
         </div>
     </div>
 </main>
+
+<script>
+  const waterValveBtn = document.getElementById("waterValveBtn");
+  var waterValveBtnText = waterValveBtn.innerHTML;
+
+  if (waterValveBtnText == "Turned On") {
+    waterValveBtn.innerHTML = "Turn Off";
+    waterValveBtn.classList.remove('btn', 'btn-primary');
+    waterValveBtn.classList.add('btn', 'btn-danger');
+  } else {
+    waterValveBtn.innerHTML = "Turn On";
+    waterValveBtn.classList.remove('btn', 'btn-danger');
+    waterValveBtn.classList.add('btn', 'btn-primary');
+  }
+
+  const waterPumpBtn = document.getElementById("waterPumpBtn");
+  var waterPumpBtnText = waterPumpBtn.innerHTML;
+
+  if (waterPumpBtnText == "Allow") {
+    waterPumpBtn.innerHTML = "Allow";
+    waterPumpBtn.classList.remove('btn', 'btn-danger');
+    waterPumpBtn.classList.add('btn', 'btn-primary');
+  } else {
+    waterPumpBtn.innerHTML = "Override";
+    waterPumpBtn.classList.remove('btn', 'btn-primary');
+    waterPumpBtn.classList.add('btn', 'btn-danger');
+  }
+</script>
