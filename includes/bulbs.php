@@ -77,7 +77,7 @@ if (isset($_POST['bulb2Btn']))      // If press ON
                                         <p class="mb-1 text-black"><?php echo $bulb1_status; ?></p>
                                     </div>
                                     <div class="custom-control custom-switch">
-                                        <form action="" method="POST">
+                                        <form id="bulbForm" action="" method="POST">
                                             <button id="bulb1Btn" class="btn btn-primary" name="bulb1Btn"><?php echo $bulb1_status; ?></button>
                                         </form>
                                     </div>
@@ -113,7 +113,7 @@ if (isset($_POST['bulb2Btn']))      // If press ON
                                         <p class="mb-1 text-black"><?php echo $bulb2_status; ?></p>
                                     </div>
                                     <div class="custom-control custom-switch">
-                                        <form action="" method="POST">
+                                        <form id="bulbForm" action="" method="POST">
                                             <button id="bulb2Btn" class="btn btn-primary" name="bulb2Btn"><?php echo $bulb2_status; ?></button>
                                         </form>
                                     </div>

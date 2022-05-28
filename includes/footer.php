@@ -13,6 +13,9 @@
 <script src="assets/js/app.js"></script>
 <script src="assets/js/index.js"></script>
 
+<!-- Jquery -->
+<script src='https://code.jquery.com/jquery-2.1.3.min.js'></script>
+
 
 <!--plugins-->
 <script src="assets/plugins/input-tags/js/tagsinput.js"></script>

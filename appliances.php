@@ -18,7 +18,7 @@ if (!isset($_COOKIE["user_email"])) {
     $bulb1_status = (int) $row["bulb1_status"];
     $bulb2_status = (int) $row["bulb2_status"];
     $fan_status = (int) $row["fan_status"];
-    $fan_speed = (int) $row["fan-speed"];
+    $fan_speed = (int) $row["fan_speed"];
   }
 }
 ?>
