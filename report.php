@@ -34,6 +34,9 @@ if (!isset($_COOKIE["user_email"])) {
 
                     while ($row = mysqli_fetch_assoc($select_water_usage)) {
                         $date = $row['date'];
+                        $date = date_create($date);
+                        $date = date_format($date, "d-M-Y");
+
                         $water_usage = $row['water_usage'];
 
                         echo "<tr>";

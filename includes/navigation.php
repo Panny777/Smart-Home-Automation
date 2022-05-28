@@ -125,7 +125,7 @@
             </li>
 
             <li>
-                <a href="https://wa.me/255621433903" target="_blank">
+                <a href="https://wa.me/255763754183" target="_blank">
                     <div class="parent-icon"><i class="bi bi-telephone-fill"></i>
                     </div>
                     <div class="menu-title">Support</div>
