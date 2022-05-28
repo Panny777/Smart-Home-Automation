@@ -109,10 +109,10 @@
             <li class="menu-label">System</li>
             <li style="border-bottom: 1px solid;"></li>
             <li>
-                <a href="#">
+                <a href="./report.php">
                     <div class="parent-icon"><i class="bi bi-chat-left-text-fill"></i></i>
                     </div>
-                    <div class="menu-title">Report</div>
+                    <div class="menu-title">Water Report</div>
                 </a>
             </li>
 
