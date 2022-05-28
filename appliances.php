@@ -44,8 +44,8 @@ switch ($source) {
         include "includes/fans.php";
         break;
 
-    case 'waterPump':
-        include "includes/waterPump.php";
+    case 'water':
+        include "includes/waterControl.php";
         break;
 
         //     default:

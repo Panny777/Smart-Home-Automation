@@ -28,52 +28,6 @@ if (!isset($_COOKIE["user_email"])) {
 include("includes/navigation.php");
 ?>
 
-
-<?php
-// Updating values for water valve
-if (isset($_POST['waterValveBtn'])) {
-  if ($waterValveBtn == 1) {
-    $query = "UPDATE users SET waterValve_status = 0 WHERE user_email = '{$user_email}'";
-    $update_waterValve_query = mysqli_query($connection, $query);
-
-    if (!$update_waterValve_query) {
-      die("QUERY FAILED" . mysqli_error($connection));
-    }
-  } else {
-    $query = "UPDATE users SET waterValve_status = 1 WHERE user_email = '{$user_email}'";
-    $update_waterValve_query = mysqli_query($connection, $query);
-
-    if (!$update_waterValve_query) {
-      die("QUERY FAILED" . mysqli_error($connection));
-    }
-  }
-  header('Location:' . $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING']);
-  die;
-}
-
-// Updating Status for water Pump
-if (isset($_POST['waterPumpBtn'])) {
-  if ($waterPumpBtn == 1) {
-    $query = "UPDATE users SET waterPump_status = 0 WHERE user_email = '{$user_email}'";
-    $update_waterValve_query = mysqli_query($connection, $query);
-
-    if (!$update_waterValve_query) {
-      die("QUERY FAILED" . mysqli_error($connection));
-    }
-  } else {
-    $query = "UPDATE users SET waterPump_status = 1 WHERE user_email = '{$user_email}'";
-    $update_waterValve_query = mysqli_query($connection, $query);
-
-    if (!$update_waterValve_query) {
-      die("QUERY FAILED" . mysqli_error($connection));
-    }
-  }
-  header('Location:' . $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING']);
-  die;
-}
-?>
-
-
 <!--start content-->
 <main class="page-content">
   <div class="card">
@@ -104,9 +58,8 @@ if (isset($_POST['waterPumpBtn'])) {
             </div>
           </div>
         </div>
-
         <div class="col-lg-6">
-          <div class="card radius-10 border-0 border-start border-pink border-3">
+          <div class="card radius-10 border-0 border-start border-success border-3">
             <div class="card-body">
               <a href="appliances.php?source=fans">
                 <div class="d-flex align-items-center">
@@ -119,7 +72,7 @@ if (isset($_POST['waterPumpBtn'])) {
                       <p class="mb-1 text-black" id=""></p>
                     </div>
                   </div>
-                  <div class="ms-auto widget-icon bg-pink text-white">
+                  <div class="ms-auto widget-icon bg-success text-white">
                     <i class="bx bx-health"></i>
                   </div>
                 </div>
@@ -128,76 +81,24 @@ if (isset($_POST['waterPumpBtn'])) {
           </div>
         </div>
         <div class="col-lg-6">
-          <div class="card radius-10 border-0 border-start border-purple border-3">
+          <div class="card radius-10 border-0 border-start border-info border-3">
             <div class="card-body">
-              <div class="d-flex align-items-center">
-                <div class="">
-                  <?php
-                  $query = "SELECT waterPump_status FROM users WHERE user_email = '{$user_email}'";
-                  $result = mysqli_query($connection, $query);
-
-                  while ($row = mysqli_fetch_assoc($result)) {
-                    $waterPump_status = (int) $row["waterPump_status"];
-                    if ($waterPump_status == 1) {
-                      $waterPump_status = "Working";
-                      $waterPump_status2 = "Override";
-                    } else {
-                      $waterPump_status = "Overrode";
-                      $waterPump_status2 = "Allow";
-                    }
-                  }
-                  ?>
-                  <p class="mb-1 text-black">Water Pump</p>
-                  <div style="display: flex;">
-                    <p class="mb-1 text-black" style="font-weight: bold;">Status:&nbsp;</p>
-                    <p class="mb-1 text-black"><?php echo $waterPump_status; ?></p>
+              <a href="appliances.php?source=water">
+                <div class="d-flex align-items-center">
+                  <div class="">
+                    <?php
+                    ?>
+                    <p class="mb-1 text-black">Water Control</p>
+                    <div style="display: flex;">
+                      <!-- <p class="mb-1 text-black" style="font-weight: bold;">Speed:&nbsp;</p> -->
+                      <p class="mb-1 text-black" id=""></p>
+                    </div>
                   </div>
-                  <div class="custom-control custom-switch">
-                    <form action="" method="POST">
-                      <button id="waterPumpBtn" class="btn btn-primary" name="waterPumpBtn"><?php echo $waterPump_status2; ?></button>
-                    </form>
-                  </div>
-                </div>
-                <div class="ms-auto widget-icon bg-purple text-white">
-                  <i class="bx bx-gas-pump"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="card radius-10 border-0 border-start border-purple border-3">
-            <div class="card-body">
-              <div class="d-flex align-items-center">
-                <div class="">
-                  <?php
-                  $query = "SELECT waterValve_status FROM users WHERE user_email = '{$user_email}'";
-                  $result = mysqli_query($connection, $query);
-
-                  while ($row = mysqli_fetch_assoc($result)) {
-                    $waterValve_status = (int) $row["waterValve_status"];
-                    if ($waterValve_status == 1) {
-                      $waterValve_status = "On";
-                    } else {
-                      $waterValve_status = "Off";
-                    }
-                  }
-                  ?>
-                  <p class="mb-1 text-black">Water Valve</p>
-                  <div style="display: flex;">
-                    <p class="mb-1 text-black" style="font-weight: bold;">Status:&nbsp;</p>
-                    <p class="mb-1 text-black"><?php echo $waterValve_status; ?></p>
-                  </div>
-                  <div class="custom-control custom-switch">
-                    <form action="" method="POST">
-                      <button id="waterValveBtn" class="btn btn-primary" name="waterValveBtn"><?php echo $waterValve_status; ?></button>
-                    </form>
-                  </div>
-                </div>
-                <div class="ms-auto widget-icon bg-tiffany text-white">
+                  <div class="ms-auto widget-icon bg-info text-white">
                   <i class="bx bx-vial"></i>
+                  </div>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>
@@ -210,7 +111,7 @@ if (isset($_POST['waterPumpBtn'])) {
   const waterValveBtn = document.getElementById("waterValveBtn");
   var waterValveBtnText = waterValveBtn.innerHTML;
 
-  if (waterValveBtnText == "On") {
+  if (waterValveBtnText == "Turned On") {
     waterValveBtn.innerHTML = "Turn Off";
     waterValveBtn.classList.remove('btn', 'btn-primary');
     waterValveBtn.classList.add('btn', 'btn-danger');
