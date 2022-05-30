@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2022 at 01:47 PM
+-- Generation Time: May 30, 2022 at 12:01 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -32,6 +32,7 @@ CREATE TABLE `users` (
   `user_password` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `bulb1_status` int(11) NOT NULL,
+  `bulb1_state` int(2) NOT NULL,
   `bulb2_status` int(11) NOT NULL,
   `fan_status` int(11) NOT NULL,
   `fan_speed` int(11) NOT NULL,
@@ -44,8 +45,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_email`, `user_password`, `username`, `bulb1_status`, `bulb2_status`, `fan_status`, `fan_speed`, `waterPump_status`, `waterValve_status`, `water_usage`) VALUES
-('achauka06@gmail.com', 'kijiko10', 'Chauka', 0, 0, 1, 1, 0, 1, 0);
+INSERT INTO `users` (`user_email`, `user_password`, `username`, `bulb1_status`, `bulb1_state`, `bulb2_status`, `fan_status`, `fan_speed`, `waterPump_status`, `waterValve_status`, `water_usage`) VALUES
+('achauka06@gmail.com', 'kijiko10', 'Chauka', 0, 1, 0, 0, 2, 1, 0, 0);
 
 -- --------------------------------------------------------
 
