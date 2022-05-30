@@ -19,8 +19,12 @@ HTTPClient http;
 //Naming the WifiClient as client
 WiFiClient client;
 
-int bulb1 = D5;
-int bulb2 = D0;
+int bulb1 = D0;
+int bulb2 = D2;
+int waterValve = D5;
+int waterPump = D6;
+int fanHigh = D3;
+int fanLow = D4;
 
 //Host to get data
 const char* host = "http://192.168.137.211/chauka/Getstatus.php?user_id=muniru.panya13@gmail.com";
@@ -75,6 +79,10 @@ void loop() {
   //  Fetching data
   int bulb1Status = jsonBuffer["bulb1_status"];
   int bulb2Status = jsonBuffer["bulb2_status"];
+  int waterValve_status = jsonBuffer["waterValve_status"];
+  int waterPump_status = jsonBuffer["waterPump_status"];
+  int fan_status = jsonBuffer["fan_status"];
+  int fan_speed = jsonBuffer["fan_speed"];
 
 
   if (bulb1Status == 1) // if data == 1 -> LED ON
@@ -94,6 +102,42 @@ void loop() {
   {
     digitalWrite(bulb2, LOW);
   }
+
+  if (waterValve_status == 1) // if data == 1 -> LED ON
+  {
+    digitalWrite(waterValve_status, HIGH);
+  }
+  else if (waterValve_status == 0) // if data == 0 -> LED OFF
+  {
+    digitalWrite(waterValve_status, LOW);
+  }
+
+  if (waterPump_status == 1) // if data == 1 -> LED ON
+  {
+    digitalWrite(waterPump_status, HIGH);
+  }
+  else if (waterPump_status == 0) // if data == 0 -> LED OFF
+  {
+    digitalWrite(waterPump_status, LOW);
+  }
+
+  if (fan_status == 1) // if data == 1 -> LED ON
+  {
+    if (fan_speed == 1) {
+      digitalWrite(fanHigh, LOW);
+      digitalWrite(fanLow, HIGH);
+    }
+    else {
+      digitalWrite(fanHigh, HIGH);
+      digitalWrite(fanLow, LOW);
+    }
+  }
+  else if (fan_status == 0) // if data == 0 -> LED OFF
+  {
+    digitalWrite(fanHigh, LOW);
+    digitalWrite(fanLow, LOW);
+  }
+
 
   //bulb1 Status
   Serial.print("Bulb1 Status: ");

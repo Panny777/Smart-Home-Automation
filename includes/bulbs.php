@@ -43,6 +43,27 @@ if (isset($_POST['bulb2Btn']))      // If press ON
     header('Location:' . $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING']);
     die;
 }
+
+if (isset($_POST['bulb1State']))      // If press ON
+{
+    if ($bulb1_state == 1) {
+        $query = "UPDATE users SET bulb1_state = 2 WHERE user_email = '{$user_email}'";
+        $update_bulb2_query = mysqli_query($connection, $query);
+
+        if (!$update_bulb2_query) {
+            die("QUERY FAILED" . mysqli_error($connection));
+        }
+    } else {
+        $query = "UPDATE users SET bulb1_state = 1 WHERE user_email = '{$user_email}'";
+        $update_bulb2_query = mysqli_query($connection, $query);
+
+        if (!$update_bulb2_query) {
+            die("QUERY FAILED" . mysqli_error($connection));
+        }
+    }
+    header('Location:' . $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING']);
+    die;
+}
 ?>
 
 <!--start content-->
@@ -64,10 +85,17 @@ if (isset($_POST['bulb2Btn']))      // If press ON
 
                                     while ($row = mysqli_fetch_assoc($result)) {
                                         $bulb1_status = (int) $row["bulb1_status"];
+
                                         if ($bulb1_status == 1) {
                                             $bulb1_status = "On";
                                         } else {
                                             $bulb1_status = "Off";
+                                        }
+
+                                        if($bulb1_state == 1) {
+                                            $bulb1_state = "Low Light";
+                                        } else {
+                                            $bulb1_state = "High Light";
                                         }
                                     }
                                     ?>
@@ -76,9 +104,18 @@ if (isset($_POST['bulb2Btn']))      // If press ON
                                         <p class="mb-1 text-black" style="font-weight: bold;">Status:&nbsp;</p>
                                         <p class="mb-1 text-black"><?php echo $bulb1_status; ?></p>
                                     </div>
-                                    <div class="custom-control custom-switch">
+                                    <div class="custom-control custom-switch mb-4">
                                         <form id="bulbForm" action="" method="POST">
                                             <button id="bulb1Btn" class="btn btn-primary" name="bulb1Btn"><?php echo $bulb1_status; ?></button>
+                                        </form>
+                                    </div>
+                                    <div style="display: flex;">
+                                        <p class="mb-1 text-black" style="font-weight: bold;">Amount:&nbsp;</p>
+                                        <p class="mb-1 text-black"><?php echo $bulb1_state; ?></p>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <form action="" method="POST">
+                                            <button id="bulb1State" class="btn btn-primary" name="bulb1State"><?php echo $bulb1_state; ?></button>
                                         </form>
                                     </div>
                                 </div>
@@ -146,16 +183,16 @@ if (isset($_POST['bulb2Btn']))      // If press ON
     }
 
     // Changing button feature for bulb2 button
-    const bulb2Btn = document.getElementById("bulb2Btn");
-    var bulb2BtnText = bulb2Btn.innerHTML;
+    const bulb1State = document.getElementById("bulb1State");
+    var bulb1StateText = bulb1State.innerHTML;
 
-    if (bulb2BtnText == "On") {
-        bulb2Btn.innerHTML = "Turn Off";
-        bulb2Btn.classList.remove('btn', 'btn-primary');
-        bulb2Btn.classList.add('btn', 'btn-danger');
+    if (bulb1StateText == "Low Light") {
+        bulb1State.innerHTML = "High Light";
+        bulb1State.classList.remove('btn', 'btn-info');
+        bulb1State.classList.add('btn', 'btn-primary');
     } else {
-        bulb2Btn.innerHTML = "Turn On";
-        bulb2Btn.classList.remove('btn', 'btn-danger');
-        bulb2Btn.classList.add('btn', 'btn-primary');
+        bulb1State.innerHTML = "Low Light";
+        bulb1State.classList.remove('btn', 'btn-danger');
+        bulb1State.classList.add('btn', 'btn-info');
     }
 </script>

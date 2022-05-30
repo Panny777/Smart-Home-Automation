@@ -137,9 +137,9 @@ if (isset($_POST['waterPumpBtn'])) {
                                     $today_date = date("Y-m-d");
 
                                     $query = "SELECT water_usage FROM water_usage WHERE user_email = '{$user_email}' AND date = '{$today_date}'";
-                                    $result = mysqli_query($connection, $query);
+                                    $select_water_usage = mysqli_query($connection, $query);
 
-                                    while ($row = mysqli_fetch_assoc($result)) {
+                                    while ($row = mysqli_fetch_assoc($select_water_usage)) {
                                         $today_water_usage = (int) $row["water_usage"];
                                     }
                                     ?>

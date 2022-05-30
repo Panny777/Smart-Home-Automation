@@ -21,6 +21,7 @@ if (!isset($_COOKIE["user_email"])) {
     $fan_speed = (int) $row["fan_speed"];
     $waterValveBtn = (int) $row["waterValve_status"];
     $waterPumpBtn = (int) $row["waterPump_status"];
+    $bulb1_state = (int) $row["bulb1_state"];
   }
 }
 ?>
