@@ -12,6 +12,7 @@ $data_array = array();
 
 while ($row = mysqli_fetch_assoc($result)) {
 	$bulb1_status = (int) $row["bulb1_status"];
+	$bulb1_state= (int) $row["bulb1_state"];
 	$bulb2_status = (int) $row["bulb2_status"];
 	$waterValve_status = (int) $row["waterValve_status"];
 	$waterPump_status = (int) $row["waterPump_status"];
@@ -20,6 +21,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 	$stdClass = new stdClass();
 	$stdClass->bulb1_status = $bulb1_status;
+	$stdClass->bulb1_state = $bulb1_state;
 	$stdClass->bulb2_status = $bulb2_status;
 	$stdClass->waterValve_status = $waterValve_status;
 	$stdClass->waterPump_status = $waterPump_status;

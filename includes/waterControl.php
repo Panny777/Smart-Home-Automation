@@ -142,6 +142,10 @@ if (isset($_POST['waterPumpBtn'])) {
                                     while ($row = mysqli_fetch_assoc($select_water_usage)) {
                                         $today_water_usage = (int) $row["water_usage"];
                                     }
+
+                                    if($today_water_usage == "") {
+                                        $today_water_usage = 0;
+                                    }
                                     ?>
                                     <p class="mb-1 text-black">Water Usage</p>
                                     <div style="display: flex;">
