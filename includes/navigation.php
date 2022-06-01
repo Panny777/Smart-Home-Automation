@@ -4,7 +4,7 @@
         background: #fff;
         box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
         flex: 1 1 auto;
-        border-radius: 10px 10px;
+        border-radius: 10px;
         position: fixed;
         bottom: 0;
         height: 65px;
@@ -22,7 +22,7 @@
     .mobile-nav i {
         font-size: xx-large;
         font-weight: bold;
-        color: lightskyblue;
+        color: #3361ff!important;
     }
 
     .mobile-nav span {
