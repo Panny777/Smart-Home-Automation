@@ -44,7 +44,7 @@ if (isset($_POST['fanSpeedBtn'])) {
 ?>
 
 <!--start content-->
-<main class="page-content">
+<!-- <main class="page-content"> -->
     <div class="card">
         <div class="card-body">
             <div class="d-flex align-items-center">
@@ -108,7 +108,7 @@ if (isset($_POST['fanSpeedBtn'])) {
             </div>
         </div>
     </div>
-</main>
+<!-- </main> -->
 
 <script>
     // Changing button feature for bulb1 button

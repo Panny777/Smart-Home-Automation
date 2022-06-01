@@ -1,17 +1,17 @@
 #include <ArduinoJson.h>
-
+#include <Arduino.h>
 #include <ESP8266HTTPClient.h>
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 
-StaticJsonDocument<200> jsonBuffer;
+StaticJsonDocument<256> jsonBuffer;
 
 // WiFi parameters
-const char* ssid = "design studio1";
-const char* password = "12345678";
+//const char* ssid = "design studio1";
+//const char* password = "12345678";
 
-//const char* ssid = "HAWA";
-//const char* password = "HAWA2020";
+const char* ssid = "Ethan";
+const char* password = "12345678";
 
 //Naming the HTTPClient as http
 HTTPClient http;
@@ -19,20 +19,28 @@ HTTPClient http;
 //Naming the WifiClient as client
 WiFiClient client;
 
-int bulb1 = D0;
+int bulb1Low = D0;
+int bulb1High = D1;
 int bulb2 = D2;
 int waterValve = D5;
 int waterPump = D6;
 int fanHigh = D3;
 int fanLow = D4;
 
+//Flow Sensor values
+int flowSensor = D7;
 //Host to get data
-const char* host = "http://192.168.137.211/chauka/Getstatus.php?user_id=muniru.panya13@gmail.com";
+const char* host = "http://94.237.90.88/chauka/Getstatus.php?user_id=achauka06@gmail.com";
 
 
 void setup() {
-  pinMode(bulb1, OUTPUT);
+  pinMode(bulb1High, OUTPUT);
+  pinMode(bulb1Low, OUTPUT);
   pinMode(bulb2, OUTPUT);
+  pinMode(waterValve, OUTPUT);
+  pinMode(waterPump, OUTPUT);
+  pinMode(fanHigh, OUTPUT);
+  pinMode(fanLow, OUTPUT);
 
   //  Initiate Serial Communication at Baud rate of 9600
   Serial.begin(9600);
@@ -47,7 +55,7 @@ void setup() {
 
   //  Checking wether the Device is connected to Network
   while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
+    delay(100);
     Serial.print(".");
   }
 
@@ -57,6 +65,16 @@ void setup() {
 
   //  Printing the Local IP of the Device
   Serial.println(WiFi.localIP());
+
+//Set the devices to OFF by default
+  digitalWrite(waterPump, HIGH);
+  digitalWrite(bulb1Low, HIGH);
+  digitalWrite(bulb1High, HIGH);
+  digitalWrite(bulb2, HIGH);
+  digitalWrite(fanLow, HIGH);
+  digitalWrite(fanHigh, HIGH);
+  digitalWrite(waterPump, HIGH);
+  digitalWrite(waterValve, HIGH);
 }
 
 
@@ -66,6 +84,8 @@ void loop() {
 
   int httpCode = http.GET();
   String payload = http.getString(); // get data from webhost continously
+
+  Serial.println(payload);
 
   DeserializationError error = deserializeJson(jsonBuffer, payload);
 
@@ -78,52 +98,68 @@ void loop() {
 
   //  Fetching data
   int bulb1Status = jsonBuffer["bulb1_status"];
+  int bulb1State = jsonBuffer["bulb1_state"];
   int bulb2Status = jsonBuffer["bulb2_status"];
   int waterValve_status = jsonBuffer["waterValve_status"];
   int waterPump_status = jsonBuffer["waterPump_status"];
   int fan_status = jsonBuffer["fan_status"];
   int fan_speed = jsonBuffer["fan_speed"];
 
-
+  //Control Bulb1
   if (bulb1Status == 1) // if data == 1 -> LED ON
   {
-    digitalWrite(bulb1, HIGH);
-  }
-  else if (bulb1Status == 0) // if data == 0 -> LED OFF
-  {
-    digitalWrite(bulb1, LOW);
+    if (bulb1State == 2) {
+      digitalWrite(bulb1High, LOW);
+      digitalWrite(bulb1Low, HIGH);
+    } else {
+      digitalWrite(bulb1Low, LOW);
+      digitalWrite(bulb1High, HIGH);
+    }
+  } else {
+    digitalWrite(bulb1High, HIGH);
+    digitalWrite(bulb1Low, HIGH);
   }
 
+
+  //  Control bulb2
   if (bulb2Status == 1) // if data == 1 -> LED ON
-  {
-    digitalWrite(bulb2, HIGH);
-  }
-  else if (bulb2Status == 0) // if data == 0 -> LED OFF
   {
     digitalWrite(bulb2, LOW);
   }
+  else if (bulb2Status == 0) // if data == 0 -> LED OFF
+  {
+    digitalWrite(bulb2, HIGH);
+  }
 
+
+
+  //  Control WaterValve
   if (waterValve_status == 1) // if data == 1 -> LED ON
   {
-    digitalWrite(waterValve_status, HIGH);
+    digitalWrite(waterValve, LOW);
   }
   else if (waterValve_status == 0) // if data == 0 -> LED OFF
   {
-    digitalWrite(waterValve_status, LOW);
+    digitalWrite(waterValve, HIGH);
   }
 
+
+
+  //  Override waterPump
   if (waterPump_status == 1) // if data == 1 -> LED ON
   {
-    digitalWrite(waterPump_status, HIGH);
+    digitalWrite(waterPump, LOW);
   }
   else if (waterPump_status == 0) // if data == 0 -> LED OFF
   {
-    digitalWrite(waterPump_status, LOW);
+    digitalWrite(waterPump, HIGH);
   }
 
+
+  //Control Fan speed
   if (fan_status == 1) // if data == 1 -> LED ON
   {
-    if (fan_speed == 1) {
+    if (fan_speed == 2) {
       digitalWrite(fanHigh, LOW);
       digitalWrite(fanLow, HIGH);
     }
@@ -132,21 +168,12 @@ void loop() {
       digitalWrite(fanLow, LOW);
     }
   }
+
   else if (fan_status == 0) // if data == 0 -> LED OFF
   {
-    digitalWrite(fanHigh, LOW);
-    digitalWrite(fanLow, LOW);
+    digitalWrite(fanHigh, HIGH);
+    digitalWrite(fanLow, HIGH);
   }
-
-
-  //bulb1 Status
-  Serial.print("Bulb1 Status: ");
-  Serial.println(bulb1Status);
-
-  //Bulb2 Status
-  Serial.println("");
-  Serial.print("Bulb2 Status: ");
-  Serial.println(bulb2Status);
 
   delay(500);
   http.end();

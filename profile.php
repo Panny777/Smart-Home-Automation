@@ -53,7 +53,7 @@ if (isset($_POST['update_admin'])) {
     <?php include "includes/navigation.php" ?>
 
     <!--start content-->
-    <main class="page-content">
+    <!-- <main class="page-content"> -->
 
         <div class="profile-cover bg-dark"></div>
 
@@ -95,7 +95,7 @@ if (isset($_POST['update_admin'])) {
                 </div>
             </div>
         </div>
-    </main>
+    <!-- </main> -->
     <!--end page main-->
 
 

@@ -67,7 +67,7 @@ if (isset($_POST['bulb1State']))      // If press ON
 ?>
 
 <!--start content-->
-<main class="page-content">
+<!-- <main class="page-content"> -->
     <div class="card">
         <div class="card-body">
             <div class="d-flex align-items-center">
@@ -165,7 +165,7 @@ if (isset($_POST['bulb1State']))      // If press ON
             </div>
         </div>
     </div>
-</main>
+<!-- </main> -->
 
 <script>
     // Changing button feature for bulb1 button

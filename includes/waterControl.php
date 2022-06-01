@@ -43,7 +43,7 @@ if (isset($_POST['waterPumpBtn'])) {
 ?>
 
 <!--start content-->
-<main class="page-content">
+<!-- <main class="page-content"> -->
     <div class="card">
         <div class="card-body">
             <div class="d-flex align-items-center">
@@ -163,7 +163,7 @@ if (isset($_POST['waterPumpBtn'])) {
             </div>
         </div>
     </div>
-</main>
+<!-- </main> -->
 
 <script>
   const waterValveBtn = document.getElementById("waterValveBtn");

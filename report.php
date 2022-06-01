@@ -14,7 +14,7 @@ if (!isset($_COOKIE["user_email"])) {
 <!-- Navigation -->
 <?php include "includes/navigation.php"; ?>
 
-<main class="page-content">
+<!-- <main class="page-content"> -->
     <div class="card">
         <div class="card-body">
             <div class="d-flex align-items-center">
@@ -49,6 +49,6 @@ if (!isset($_COOKIE["user_email"])) {
             </table>
         </div>
     </div>
-</main>
+<!-- </main> -->
 
 <?php include "includes/footer.php"; ?>

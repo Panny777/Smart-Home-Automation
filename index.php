@@ -27,8 +27,8 @@ include("includes/navigation.php");
 ?>
 
 <!--start content-->
-<main class="page-content">
-  <div class="card">
+<!-- <main class="page-content"> -->
+  <div class="card ">
     <div class="card-body">
       <div class="d-flex align-items-center">
         <h5 class="mb-4">Applicances</h5>
@@ -103,7 +103,7 @@ include("includes/navigation.php");
       </div>
     </div>
   </div>
-</main>
+<!-- </main> -->
 
 
 <?php
