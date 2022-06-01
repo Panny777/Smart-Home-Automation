@@ -1,5 +1,6 @@
 <style>
     .mobile-nav {
+        z-index: 9999;
         background: #fff;
         box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
         flex: 1 1 auto;
