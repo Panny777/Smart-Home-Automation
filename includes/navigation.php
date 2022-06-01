@@ -23,6 +23,14 @@
         font-size: xx-large;
         font-weight: bold;
         color: #3361ff!important;
+        transition: 0.4s ease-in-out;
+    }
+
+    .mobile-nav i:hover {
+        font-size: 25px;
+        font-weight: bold;
+        color: blue !important;
+        transition: 0.4s ease-in-out;
     }
 
     .mobile-nav span {
